@@ -1,0 +1,167 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        gradlePluginPortal()
+        maven { url "https://repo.spring.io/libs-release" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+    plugins {
+
+        //google protobuf
+        id 'com.google.protobuf' version "0.8.19"
+
+        //Plugin form com.apihug, always update the version here
+        id 'com.apihug.wire' version '0.0.8-RELEASE'
+        id 'com.apihug.stub' version '0.0.8-RELEASE'
+
+        // for spring things
+        id 'org.springframework.boot' version '3.0.1'
+        id 'io.spring.dependency-management' version '1.1.0'
+
+        // liquibase for database
+        id 'org.liquibase.gradle' version "${liquibasePluginVersion}"
+
+    }
+}
+
+rootProject.name = 'hope-guides'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+
+            //basic lib version from the Apihug, always update version here
+            version("hopeVersion", "0.0.8-RELEASE")
+
+            version('checkstyle', '8.37')
+            version('gitPropertiesPluginVersion', '2.4.0')
+            version('modernizerPluginVersion', '1.6.2')
+            version('protoPluginVersion', '0.8.19')
+            version('protoWirePluginVersion', '4.4.0')
+            version('swaggerVersion', '1.6.6')
+            version('swagger3xVersion', '2.2.7')
+            version('jacksonVersion', '2.13.3')
+            version('javafxVersion', '19')
+            version('mapstructVersion', '1.5.3.Final')
+
+            //Spring's
+            version('springBootVersion', '3.0.1')
+            version('springCloudVersion', '2022.0.0')
+
+            version('spotlessVersion', '6.12.0');
+            version('spotbugsVersion', '5.0.13');
+
+            version('swaggerParserVersion' , '2.1.16')
+            version('slf4jVersion' , '2.0.9')
+
+
+            //JSR compatible
+            //already in the spring boot keep compatible
+            library('javaxAnnotation', 'javax.annotation', 'javax.annotation-api').version('1.3.2')
+            library('javaxServlet', 'javax.servlet', 'javax.servlet-api').version('4.0.1')
+
+            // 2.0 not compatible with spring boot 3.0
+            // library('javaxValidation', 'javax.validation', 'validation-api').version('2.0.1.Final')
+            library('jakartaValidation', 'jakarta.validation', 'jakarta.validation-api').version('3.0.2')
+
+            library('findbug', 'com.google.code.findbugs', 'jsr305').version('3.0.2');
+
+            //START proto things；
+            library('protobufJava', 'com.google.protobuf', 'protobuf-java').version('3.19.1');
+            library('protobufJavaUtil', 'com.google.protobuf', 'protobuf-java-util').version('3.19.1');
+            library('protobufPlugin', 'com.google.protobuf', 'protobuf-gradle-plugin').versionRef('protoPluginVersion');
+
+            library('grpcStub', 'io.grpc', 'grpc-stub').version('1.47.0');
+            library('grpcProtobuf', 'io.grpc', 'grpc-protobuf').version('1.47.0');
+            //END
+
+            //Swagger Models
+            library('swaggerModel', 'io.swagger', 'swagger-models').versionRef('swaggerVersion');
+            library('swaggerV3Model', 'io.swagger.core.v3', 'swagger-models').versionRef('swagger3xVersion');
+            library('swaggerV3Core', 'io.swagger.core.v3', 'swagger-core').versionRef('swagger3xVersion');
+
+
+            //General data-binding functionality for Jackson: works on core streaming API
+            library('jacksonDatabind', 'com.fasterxml.jackson.core', 'jackson-databind').versionRef('jacksonVersion');
+            //Core annotations used for value types, used by Jackson data binding package.
+            library('jacksonAnnotations', 'com.fasterxml.jackson.core', 'jackson-annotations').versionRef('jacksonVersion');
+            //Core Jackson processing abstractions (aka Streaming API), implementation for JSON
+            library('jacksonCore', 'com.fasterxml.jackson.core', 'jackson-core').versionRef('jacksonVersion');
+            //Add-on module to support JSR-310 (Java 8 Date & Time API) data types.
+            library('jacksonDataTypeJSR310', 'com.fasterxml.jackson.datatype', 'jackson-datatype-jsr310').versionRef('jacksonVersion');
+
+
+            // https://mapstruct.org/documentation/installation/
+            // https://mapstruct.org/documentation/stable/reference/html/
+            // https://github.com/mapstruct/mapstruct-examples
+            library('mapStruct', 'org.mapstruct', 'mapstruct').versionRef('mapstructVersion');
+            library('mapStructProcessor', 'org.mapstruct', 'mapstruct-processor').versionRef('mapstructVersion');
+
+            //spring's
+            library('springBootDependencies', 'org.springframework.boot', 'spring-boot-dependencies').versionRef('springBootVersion');
+            library('springCloudDependencies', 'org.springframework.cloud', 'spring-cloud-dependencies').versionRef('springCloudVersion');
+
+
+            //plugin part
+            plugin('sonarqube', 'org.sonarqube').version('3.0')
+            plugin('gitProperties', 'com.gorylenko.gradle-git-properties').versionRef('gitPropertiesPluginVersion')
+            plugin('modernizer', 'com.github.andygoossens.gradle-modernizer-plugin').versionRef('modernizerPluginVersion')
+
+            plugin('protobufPlugin', 'com.google.protobuf').versionRef('protoPluginVersion')
+            plugin('protobufWirePlugin', 'com.squareup.wire').versionRef('protoWirePluginVersion')
+
+            //Apihug proto dependency
+            library('hopeDependencies', 'com.apihug', 'it-bom').versionRef('hopeVersion');
+
+
+            //Swagger parser:
+            library('swaggerParserV3', 'io.swagger.parser.v3', 'swagger-parser-v3').versionRef('swaggerParserVersion');
+            library('swaggerParser', 'io.swagger.parser.v3', 'swagger-parser').versionRef('swaggerParserVersion');
+            library('swaggerParserV2Converter', 'io.swagger.parser.v3', 'swagger-parser-v2-converter').versionRef('swaggerParserVersion');
+
+            library('slf4jApi', 'org.slf4j', 'slf4j-api').versionRef('slf4jVersion');
+            library('jclOverslf4j', 'org.slf4j', 'jcl-over-slf4j').versionRef('slf4jVersion');
+            library('slf4jSimple', 'org.slf4j', 'slf4j-simple').versionRef('slf4jVersion');
+
+
+
+            // Spotless - keep your code spotless with Gradle
+            // https://github.com/diffplug/spotless/tree/main/plugin-gradle
+            plugin('spotless', 'com.diffplug.spotless').versionRef('spotlessVersion')
+
+            plugin('taskTree', 'com.dorongold.task-tree').version('2.1.1')
+
+            // Performs quality checks on your project's Java source
+            // files using SpotBugs and generates reports from these checks
+            // https://plugins.gradle.org/plugin/com.github.spotbugs
+            // id "com.github.spotbugs" version "5.0.13"
+            plugin('spotbugs', 'com.github.spotbugs').versionRef('spotbugsVersion')
+
+        }
+
+        testLibs {
+            def assertjVersion = version('assertjVersion', '3.24.2')
+
+            def junit5 = version('junit5', '5.9.1')
+
+            def archUnit =  version('archUnit', '1.1.0')
+
+            library('jupiter', 'org.junit.jupiter', 'junit-jupiter').versionRef(junit5)
+            library('junit-api', 'org.junit.jupiter', 'junit-jupiter-api').versionRef(junit5)
+            library('junit-engine', 'org.junit.jupiter', 'junit-jupiter-engine').versionRef(junit5)
+
+
+            library('archunitApi', 'com.tngtech.archunit', 'archunit-junit5-api').versionRef(archUnit)
+            library('archunitEngine', 'com.tngtech.archunit', 'archunit-junit5-engine').versionRef(archUnit)
+
+            library('assertjCore', 'org.assertj', 'assertj-core').versionRef(assertjVersion)
+
+        }
+    }
+}
+
+
+include('001-hello-world:001-hello-world-proto')
+include('001-hello-world:001-hello-world')
+

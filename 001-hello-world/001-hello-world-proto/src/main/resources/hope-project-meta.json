@@ -1,0 +1,28 @@
+{
+  "artifact" : {
+    "groupId" : "com.apihug",
+    "artifactId" : "001-hello-world-proto",
+    "version" : "0.0.4-RELEASE"
+  },
+  "name" : "001-hello-world-proto",
+  "description" : "Hope Guide Hello World",
+  "application" : "001-hello-world-proto",
+  "packageName" : "com.apihug.guide",
+  "type" : "PROTO",
+  "domain" : "hello",
+  "identifier" : "001-hello-world-proto",
+  "status" : {
+    "deprecated" : false,
+    "createdTimestamp" : "2023-01-09",
+    "updatedTimestamp" : "2023-01-09",
+    "lastBuildTimestamp" : "2023-10-19 23:14:25",
+    "updatedBy" : "aaron"
+  },
+  "persistence" : {
+    "identifyType" : "LONG",
+    "tenantType" : "LONG"
+  },
+  "authority" : {
+    "codePrefix" : 11000000
+  }
+}

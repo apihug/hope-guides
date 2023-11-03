@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package com.apihug.guide.proto.api.first.response;
+
+import "extend/domain.proto";
+import "swagger/annotations.proto";
+option (hope.domain.kind) = BEAN;
+
+message LoginResponse {
+  option (hope.swagger.schema) = {
+    json_schema: {
+      description: "登录请求";
+    };
+  };
+
+  string email = 1 [(hope.swagger.field) = {
+    description: "邮箱";
+    example: "jake@bigger.com"
+    empty: {
+      value: false
+    };
+    email: {
+      value: true
+    };
+    mock: {
+      nature: EMAIL
+    }
+  }];
+
+  string token = 2 [(hope.swagger.field) = {
+    description: "token";
+    example: "32321x"
+    empty: {
+      value: false
+    };
+    mock: {
+      string_rule: {
+        length: {
+          value: 32
+        }
+      }
+    }
+  }];
+}

@@ -1,0 +1,51 @@
+plugins {
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.spotbugs)
+    alias(libs.plugins.sonarqube)
+    alias(libs.plugins.gitProperties)
+}
+
+logger.quiet "Java version: ${System.properties['java.version']}"
+logger.quiet "Gradle version: $gradle.gradleVersion"
+logger.quiet "Current dir: $rootDir"
+
+ext {
+
+    println("ALL_MODULES " + subprojects)
+
+    //this is a exotic  project, some thing may special
+    kProjects = [
+            
+    ]
+
+}
+
+configure(subprojects) {
+    group = GROUPID
+    version = VERSION
+
+    apply plugin: "java"
+}
+
+configure(subprojects - kProjects) {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.spring.io/libs-release" }
+        maven { url "https://repo.spring.io/milestone" }
+    }
+}
+
+
+gitProperties {
+    failOnNoGitDirectory = false
+    keys = ["git.branch", "git.commit.id.abbrev", "git.commit.id.describe"]
+}
+
+
+
+wrapper {
+    gradleVersion = "7.4.2"
+    distributionType = Wrapper.DistributionType.ALL
+}

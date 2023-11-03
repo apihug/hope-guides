@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package com.apihug.guide.proto.api.first;
+
+import "extend/domain.proto";
+import "google/protobuf/empty.proto";
+import "swagger/annotations.proto";
+import "com/apihug/guide/proto/api/first/request/request.proto";
+import "com/apihug/guide/proto/api/first/response/response.proto";
+
+
+option java_multiple_files = true;
+option (hope.domain.kind) = IDL;
+
+service HelloEchoService {
+    option (hope.swagger.base_path) = "/guide";
+
+    rpc SayHello (google.protobuf.Empty) returns (google.protobuf.Empty) {
+        option (hope.swagger.operation) = {
+            get: "/hello";
+            description: "你好";
+            tags: "test";
+            group: TENANT;
+            priority: HIGH;
+            parameters: {
+                parameter: {
+                    in: QUERY;
+                    name: "name";
+                    scheme: {
+                        type: STRING;
+                    }
+                }
+            }
+        };
+    }
+    rpc Login (request.LoginRequest) returns (response.LoginResponse) {
+        option (hope.swagger.operation) = {
+            post: '/login'
+            description: "登录";
+            tags: "test";
+            priority: HIGH;
+        };
+    }
+
+}

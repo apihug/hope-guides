@@ -1,0 +1,33 @@
+plugins {
+    id "java-library"
+    id "com.apihug.wire"
+}
+
+description("apihug guide first demo proto")
+
+group("com.apihug")
+
+hopeWire {
+
+    packagePrefix = "com.apihug.guide"
+    local = false
+    keepProto = true
+    smock = false
+    debug = false
+
+}
+
+hopeServer {
+    //url = "${System.getenv("HOPE_URL")}?"
+    url = "https://api.hipo.com/system/workspace/open/upload-meta?"
+    //appKey = "${System.getenv("HOPE_APP_KEY")}"
+    appKey = "just";
+    //appSecret = "${System.getenv("HOPE_APP_SECRET")}"
+    appSecret = "just";
+}
+
+dependencies {
+
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
+    testImplementation testLibs.jupiter
+}
