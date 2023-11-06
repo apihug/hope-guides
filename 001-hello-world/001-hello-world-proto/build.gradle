@@ -8,13 +8,8 @@ description("apihug guide first demo proto")
 group("com.apihug")
 
 hopeWire {
-
-    packagePrefix = "com.apihug.guide"
-    local = false
     keepProto = true
-    smock = false
-    debug = false
-
+    verbose = true
 }
 
 hopeServer {
@@ -28,6 +23,6 @@ hopeServer {
 
 dependencies {
 
-    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
-    testImplementation testLibs.jupiter
+    //testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.13.4.2'
+    //testImplementation testLibs.jupiter
 }

@@ -12,8 +12,8 @@ pluginManagement {
         id 'com.google.protobuf' version "0.8.19"
 
         //Plugin form com.apihug, always update the version here
-        id 'com.apihug.wire' version '0.0.8-RELEASE'
-        id 'com.apihug.stub' version '0.0.8-RELEASE'
+        id 'com.apihug.wire' version '0.2.3-RELEASE'
+        id 'com.apihug.stub' version '0.2.3-RELEASE'
 
         // for spring things
         id 'org.springframework.boot' version '3.0.1'
@@ -32,7 +32,7 @@ dependencyResolutionManagement {
         libs {
 
             //basic lib version from the Apihug, always update version here
-            version("hopeVersion", "0.0.8-RELEASE")
+            version("hopeVersion", "0.2.3-RELEASE")
 
             version('checkstyle', '8.37')
             version('gitPropertiesPluginVersion', '2.4.0')

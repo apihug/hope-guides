@@ -5,24 +5,21 @@
     "version" : "0.0.4-RELEASE"
   },
   "name" : "001-hello-world-proto",
-  "description" : "Hope Guide Hello World",
-  "application" : "001-hello-world-proto",
+  "description" : "apihug guide first demo proto",
+  "application" : "001-hello-world",
   "packageName" : "com.apihug.guide",
   "type" : "PROTO",
-  "domain" : "hello",
+  "domain" : "hope",
   "identifier" : "001-hello-world-proto",
+  "module" : "001-hello-world-proto",
   "status" : {
     "deprecated" : false,
-    "createdTimestamp" : "2023-01-09",
-    "updatedTimestamp" : "2023-01-09",
-    "lastBuildTimestamp" : "2023-10-19 23:14:25",
-    "updatedBy" : "aaron"
+    "createdTimestamp" : "2023-01-01",
+    "lastBuildTimestamp" : "2023-11-06 15:40:03",
+    "createdBy" : "Aaron"
   },
   "persistence" : {
     "identifyType" : "LONG",
     "tenantType" : "LONG"
-  },
-  "authority" : {
-    "codePrefix" : 11000000
   }
 }

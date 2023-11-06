@@ -9,19 +9,19 @@ import java.lang.String;
 import javax.annotation.Generated;
 
 @Generated("H.O.P.E. Infra Team")
-public class HelloApiModule implements Module<HelloApiCollector> {
+public class HopeApiModule implements Module<HopeApiCollector> {
   protected final Project project;
 
-  protected final HelloApiCollector api;
+  protected final HopeApiCollector api;
 
-  public HelloApiModule() {
+  public HopeApiModule() {
     project =  new Project();
-    api =  new HelloApiCollector();
+    api =  new HopeApiCollector();
     project.setName("001-hello-world-proto");
-    project.setDescription("Hope Guide Hello World");
-    project.setDomain("hello");
+    project.setDescription("apihug guide first demo proto");
+    project.setDomain("hope");
     project.setPackageName("com.apihug.guide");
-    project.setApplication("001-hello-world-proto");
+    project.setApplication("001-hello-world");
     project.setIdentifier("001-hello-world-proto");
     Artifact artifact = new Artifact();
     project.setArtifact(artifact);
@@ -30,8 +30,8 @@ public class HelloApiModule implements Module<HelloApiCollector> {
     artifact.setVersion("0.0.4-RELEASE");
     ProjectStatus status = new ProjectStatus();
     project.setStatus(status);
-    status.setCreatedTimestamp("2023-01-09");
-    status.setUpdatedBy("aaron");
+    status.setCreatedTimestamp("2023-01-01");
+    status.setCreatedBy("Aaron");
   }
 
   @Override
@@ -40,7 +40,7 @@ public class HelloApiModule implements Module<HelloApiCollector> {
   }
 
   @Override
-  public HelloApiCollector service() {
+  public HopeApiCollector service() {
     return api;
   }
 

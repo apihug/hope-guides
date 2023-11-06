@@ -1,8 +1,8 @@
 {
   "openapi" : "3.0.1",
   "info" : {
-    "title" : "Apihug Guide - OpenAPI",
-    "description" : "ApiHug Guide OpenAPI",
+    "title" : "001-hello-world-proto",
+    "description" : "apihug guide first demo proto",
     "contact" : {
       "name" : "developer@apihug.com",
       "url" : "https://github.com/apihug/",
@@ -12,12 +12,8 @@
   },
   "externalDocs" : {
     "description" : "Hope is the best thing",
-    "url" : "https://github.com/apihug//"
+    "url" : "https://github.com/apihug/apihug.com/"
   },
-  "tags" : [ {
-    "name" : "test",
-    "description" : "测试"
-  } ],
   "paths" : {
     "/guide/hello" : {
       "get" : {
@@ -267,38 +263,6 @@
         "x-hope-java-class" : "hope.common.wire.constant.ProblemPhase",
         "x-hope-enum-type" : "true"
       },
-      "LoginResponse" : {
-        "type" : "object",
-        "description" : "登录请求",
-        "properties" : {
-          "email" : {
-            "type" : "string",
-            "format" : "email",
-            "description" : "邮箱",
-            "example" : "jake@bigger.com",
-            "x-hope-validation" : {
-              "email" : true
-            },
-            "x-hope-mock" : {
-              "nature" : "EMAIL",
-              "name" : "nature"
-            }
-          },
-          "token" : {
-            "type" : "string",
-            "description" : "token",
-            "example" : "32321x",
-            "x-hope-mock" : {
-              "length" : 32,
-              "name" : "string"
-            }
-          }
-        },
-        "x-hope-rt-meta" : {
-          "clz" : "com.apihug.guide.wire.api.first.response.LoginResponse",
-          "protoFrom" : "com/apihug/guide/proto/api/first/response/response.proto"
-        }
-      },
       "LoginRequest" : {
         "type" : "object",
         "description" : "登录请求",
@@ -336,6 +300,38 @@
         "x-hope-rt-meta" : {
           "clz" : "com.apihug.guide.wire.api.first.request.LoginRequest",
           "protoFrom" : "com/apihug/guide/proto/api/first/request/request.proto"
+        }
+      },
+      "LoginResponse" : {
+        "type" : "object",
+        "description" : "登录请求",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "description" : "邮箱",
+            "example" : "jake@bigger.com",
+            "x-hope-validation" : {
+              "email" : true
+            },
+            "x-hope-mock" : {
+              "nature" : "EMAIL",
+              "name" : "nature"
+            }
+          },
+          "token" : {
+            "type" : "string",
+            "description" : "token",
+            "example" : "32321x",
+            "x-hope-mock" : {
+              "length" : 32,
+              "name" : "string"
+            }
+          }
+        },
+        "x-hope-rt-meta" : {
+          "clz" : "com.apihug.guide.wire.api.first.response.LoginResponse",
+          "protoFrom" : "com/apihug/guide/proto/api/first/response/response.proto"
         }
       },
       "LoginResponseResult" : {
@@ -416,24 +412,21 @@
       "version" : "0.0.4-RELEASE"
     },
     "name" : "001-hello-world-proto",
-    "description" : "Hope Guide Hello World",
-    "application" : "001-hello-world-proto",
+    "description" : "apihug guide first demo proto",
+    "application" : "001-hello-world",
     "packageName" : "com.apihug.guide",
     "type" : "PROTO",
-    "domain" : "hello",
+    "domain" : "hope",
     "identifier" : "001-hello-world-proto",
+    "module" : "001-hello-world-proto",
     "status" : {
       "deprecated" : false,
-      "createdTimestamp" : "2023-01-09",
-      "updatedTimestamp" : "2023-01-09",
-      "updatedBy" : "aaron"
+      "createdTimestamp" : "2023-01-01",
+      "createdBy" : "Aaron"
     },
     "persistence" : {
       "identifyType" : "LONG",
       "tenantType" : "LONG"
-    },
-    "authority" : {
-      "codePrefix" : 11000000
     }
   }
 }

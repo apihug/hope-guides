@@ -37,7 +37,7 @@ import java.util.Set;
 import javax.annotation.Generated;
 
 @Generated("H.O.P.E. Infra Team")
-public final class HelloApiCollector implements Collector<OpenAPI, Schema, ApiResponse, Parameter, Example, RequestBody, Header, SecurityScheme, Link, Callback, Tag> {
+public final class HopeApiCollector implements Collector<OpenAPI, Schema, ApiResponse, Parameter, Example, RequestBody, Header, SecurityScheme, Link, Callback, Tag> {
   public static final String COMPONENTS_SCHEMAS_REF = Components.COMPONENTS_SCHEMAS_REF;
 
   protected final OpenAPI api;
@@ -76,7 +76,7 @@ public final class HelloApiCollector implements Collector<OpenAPI, Schema, ApiRe
 
   protected final Map<String, Component> componentMap = new LinkedHashMap();
 
-  public HelloApiCollector() {
+  public HopeApiCollector() {
     this.api =  new OpenAPI();
     Components components = new Components();
     components.setSchemas(schemas);
@@ -187,95 +187,6 @@ public final class HelloApiCollector implements Collector<OpenAPI, Schema, ApiRe
   public void registerPathClz(String path, String clz) {
     pathClzMap.put(path, clz);
     clzPathMap.computeIfAbsent(clz, s -> new LinkedHashSet<>()).add(path);
-  }
-
-  private final void _build_component_com_apihug_guide_wire_api_first_response_LoginResponse() {
-    //  Build of the component: LoginResponse proto: com/apihug/guide/proto/api/first/response/response.proto
-    Component<Schema, Schema> res = new Component();
-    componentMap.put("com.apihug.guide.wire.api.first.response.LoginResponse", res);
-    res.setClzName("com.apihug.guide.wire.api.first.response.LoginResponse");
-    res.setName("LoginResponse");
-    res.setProtoFrom("com/apihug/guide/proto/api/first/response/response.proto");
-    res.setDescription("登录请求");
-    res.setPayload(new Builder<Schema>() {
-      @Override
-      public Schema build() {
-        Schema res  = new Schema();
-        res.setDescription("登录请求");
-        res.setSpecVersion(SpecVersion.V30);
-        res.setNullable(false);
-        return res;
-      }
-    }.build());
-    // Add field 0 email
-    ComponentItem<Schema> _0 = new ComponentItem();
-    _0.setClz("java.lang.String");
-    _0.setName("email");
-    _0.setFieldName("email");
-    _0.setPayload(new Builder<Schema>() {
-      @Override
-      public Schema build() {
-        Schema res  = new Schema();
-        res.setDescription("邮箱");
-        res.setFormat("email");
-        res.setSpecVersion(SpecVersion.V30);
-        res.setNullable(false);
-        res.setExample("jake@bigger.com");
-        res.setTypes(Set.of("string"));
-        return res;
-      }
-    }.build());
-    _0.setValidation(new Builder<Validation>() {
-      @Override
-      public Validation build() {
-        Validation res = new Validation();
-        res.setEmail(true);
-        return res;
-      }
-    }.build());
-    _0.setRule(new Builder<Map>() {
-      @Override
-      public Map build() {
-        Map res = new LinkedHashMap();
-        res.put("nature", "EMAIL");
-        res.put("name", "nature");
-        return res;
-      }
-    }.build());
-    res.addItem(_0);
-    // Add field 1 token
-    ComponentItem<Schema> _1 = new ComponentItem();
-    _1.setClz("java.lang.String");
-    _1.setName("token");
-    _1.setFieldName("token");
-    _1.setPayload(new Builder<Schema>() {
-      @Override
-      public Schema build() {
-        Schema res  = new Schema();
-        res.setDescription("token");
-        res.setSpecVersion(SpecVersion.V30);
-        res.setNullable(false);
-        res.setExample("32321x");
-        return res;
-      }
-    }.build());
-    _1.setValidation(new Builder<Validation>() {
-      @Override
-      public Validation build() {
-        Validation res = new Validation();
-        return res;
-      }
-    }.build());
-    _1.setRule(new Builder<Map>() {
-      @Override
-      public Map build() {
-        Map res = new LinkedHashMap();
-        res.put("length", 32);
-        res.put("name", "string");
-        return res;
-      }
-    }.build());
-    res.addItem(_1);
   }
 
   private final void _build_component_com_apihug_guide_wire_api_first_request_LoginRequest() {
@@ -406,6 +317,95 @@ public final class HelloApiCollector implements Collector<OpenAPI, Schema, ApiRe
     res.addItem(_3);
   }
 
+  private final void _build_component_com_apihug_guide_wire_api_first_response_LoginResponse() {
+    //  Build of the component: LoginResponse proto: com/apihug/guide/proto/api/first/response/response.proto
+    Component<Schema, Schema> res = new Component();
+    componentMap.put("com.apihug.guide.wire.api.first.response.LoginResponse", res);
+    res.setClzName("com.apihug.guide.wire.api.first.response.LoginResponse");
+    res.setName("LoginResponse");
+    res.setProtoFrom("com/apihug/guide/proto/api/first/response/response.proto");
+    res.setDescription("登录请求");
+    res.setPayload(new Builder<Schema>() {
+      @Override
+      public Schema build() {
+        Schema res  = new Schema();
+        res.setDescription("登录请求");
+        res.setSpecVersion(SpecVersion.V30);
+        res.setNullable(false);
+        return res;
+      }
+    }.build());
+    // Add field 0 email
+    ComponentItem<Schema> _0 = new ComponentItem();
+    _0.setClz("java.lang.String");
+    _0.setName("email");
+    _0.setFieldName("email");
+    _0.setPayload(new Builder<Schema>() {
+      @Override
+      public Schema build() {
+        Schema res  = new Schema();
+        res.setDescription("邮箱");
+        res.setFormat("email");
+        res.setSpecVersion(SpecVersion.V30);
+        res.setNullable(false);
+        res.setExample("jake@bigger.com");
+        res.setTypes(Set.of("string"));
+        return res;
+      }
+    }.build());
+    _0.setValidation(new Builder<Validation>() {
+      @Override
+      public Validation build() {
+        Validation res = new Validation();
+        res.setEmail(true);
+        return res;
+      }
+    }.build());
+    _0.setRule(new Builder<Map>() {
+      @Override
+      public Map build() {
+        Map res = new LinkedHashMap();
+        res.put("nature", "EMAIL");
+        res.put("name", "nature");
+        return res;
+      }
+    }.build());
+    res.addItem(_0);
+    // Add field 1 token
+    ComponentItem<Schema> _1 = new ComponentItem();
+    _1.setClz("java.lang.String");
+    _1.setName("token");
+    _1.setFieldName("token");
+    _1.setPayload(new Builder<Schema>() {
+      @Override
+      public Schema build() {
+        Schema res  = new Schema();
+        res.setDescription("token");
+        res.setSpecVersion(SpecVersion.V30);
+        res.setNullable(false);
+        res.setExample("32321x");
+        return res;
+      }
+    }.build());
+    _1.setValidation(new Builder<Validation>() {
+      @Override
+      public Validation build() {
+        Validation res = new Validation();
+        return res;
+      }
+    }.build());
+    _1.setRule(new Builder<Map>() {
+      @Override
+      public Map build() {
+        Map res = new LinkedHashMap();
+        res.put("length", 32);
+        res.put("name", "string");
+        return res;
+      }
+    }.build());
+    res.addItem(_1);
+  }
+
   private final void _build_service_com_apihug_guide_wire_api_first_HelloEchoService() {
     // ----------------------------------------------------
     // START-[Service Context] com.apihug.guide.wire.api.first.HelloEchoService
@@ -529,33 +529,24 @@ public final class HelloApiCollector implements Collector<OpenAPI, Schema, ApiRe
     new Builder<String>() {
       @Override
       public String build() {
-        _info.setTitle("Apihug Guide - OpenAPI");
-        _info.setDescription("ApiHug Guide OpenAPI");
+        _info.setTitle("001-hello-world-proto");
+        _info.setDescription("apihug guide first demo proto");
         _info.setVersion("0.0.4-RELEASE");
         _contact.setName("developer@apihug.com");
         _contact.setUrl("https://github.com/apihug/");
         _contact.setEmail("developer@apihug.com");
-        _external_documentation.setUrl("https://github.com/apihug//");
+        _external_documentation.setUrl("https://github.com/apihug/apihug.com/");
         _external_documentation.setDescription("Hope is the best thing");
         return "DONE";
       }
     }.build();
-    tags.put("test", new Builder<Tag>() {
-      @Override
-      public Tag build() {
-        Tag res  = new Tag();
-        res.setName("test");
-        res.setDescription("测试");
-        return res;
-      }
-    }.build());
   }
 
   private void _init() {
-    // Build for Component : com.apihug.guide.wire.api.first.response.LoginResponse
-    _build_component_com_apihug_guide_wire_api_first_response_LoginResponse();
     // Build for Component : com.apihug.guide.wire.api.first.request.LoginRequest
     _build_component_com_apihug_guide_wire_api_first_request_LoginRequest();
+    // Build for Component : com.apihug.guide.wire.api.first.response.LoginResponse
+    _build_component_com_apihug_guide_wire_api_first_response_LoginResponse();
     // Build For Service com.apihug.guide.wire.api.first.HelloEchoService
     _build_service_com_apihug_guide_wire_api_first_HelloEchoService();
     // Build OpenAPI information

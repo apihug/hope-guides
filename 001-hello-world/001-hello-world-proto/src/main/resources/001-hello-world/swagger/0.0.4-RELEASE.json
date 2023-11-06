@@ -1,0 +1,432 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "001-hello-world-proto",
+    "description" : "apihug guide first demo proto",
+    "contact" : {
+      "name" : "developer@apihug.com",
+      "url" : "https://github.com/apihug/",
+      "email" : "developer@apihug.com"
+    },
+    "version" : "0.0.4-RELEASE"
+  },
+  "externalDocs" : {
+    "description" : "Hope is the best thing",
+    "url" : "https://github.com/apihug/apihug.com/"
+  },
+  "paths" : {
+    "/guide/hello" : {
+      "get" : {
+        "tags" : [ "test" ],
+        "summary" : "",
+        "description" : "你好",
+        "operationId" : "HelloEchoService#SayHello",
+        "parameters" : [ {
+          "name" : "name",
+          "in" : "query",
+          "schema" : {
+            "type" : "string",
+            "readOnly" : false
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "你好",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "code" : {
+                      "type" : "integer",
+                      "format" : "int32",
+                      "description" : "返回码,零成功,非零失败"
+                    },
+                    "message" : {
+                      "type" : "string",
+                      "description" : "返回提示信息"
+                    },
+                    "errors" : {
+                      "type" : "array",
+                      "description" : "错误详情列表",
+                      "items" : {
+                        "$ref" : "#/components/schemas/Error"
+                      },
+                      "title" : "errors"
+                    },
+                    "data" : {
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "deprecated" : false,
+        "security" : [ ],
+        "x-hope-operation" : {
+          "deprecated" : false,
+          "wrapper" : true,
+          "inputPlural" : false,
+          "outputPlural" : false,
+          "pageable" : false,
+          "protoFrom" : "com/apihug/guide/proto/api/first/hello.proto",
+          "empty" : false,
+          "priority" : "HIGH",
+          "group" : "TENANT"
+        }
+      }
+    },
+    "/guide/login" : {
+      "post" : {
+        "tags" : [ "test" ],
+        "summary" : "",
+        "description" : "登录",
+        "operationId" : "HelloEchoService#Login",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "$ref" : "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "登录",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/LoginResponseResult"
+                }
+              }
+            }
+          }
+        },
+        "deprecated" : false,
+        "security" : [ ],
+        "x-hope-operation" : {
+          "deprecated" : false,
+          "wrapper" : true,
+          "inputPlural" : false,
+          "outputPlural" : false,
+          "pageable" : false,
+          "protoFrom" : "com/apihug/guide/proto/api/first/hello.proto",
+          "empty" : false,
+          "priority" : "HIGH",
+          "group" : "CUSTOMER"
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Error" : {
+        "type" : "object",
+        "description" : "错误对象",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "description" : "错误码",
+            "example" : 1000001001
+          },
+          "title" : {
+            "type" : "string",
+            "description" : "错误标题",
+            "example" : "USER_NAME_EMPTY"
+          },
+          "description" : {
+            "type" : "string",
+            "description" : "错误描述",
+            "example" : "user name should not be empty"
+          },
+          "descriptionZhCN" : {
+            "type" : "string",
+            "description" : "错误描述(中)",
+            "example" : "用户名不可以为空"
+          },
+          "field" : {
+            "type" : "string",
+            "description" : "字段",
+            "example" : "name"
+          },
+          "path" : {
+            "type" : "string",
+            "description" : "字段路径",
+            "example" : "user.name"
+          },
+          "rejectedValue" : {
+            "type" : "string",
+            "description" : "输入值",
+            "example" : "Jake.Bush"
+          },
+          "tips" : {
+            "type" : "string",
+            "description" : "使用提示",
+            "example" : "价格必须是正数:1000.12"
+          },
+          "constraint" : {
+            "type" : "string",
+            "description" : "校验规则",
+            "example" : "POSITIVE|NOT_EMPTY|REG_EXP"
+          },
+          "phase" : {
+            "$ref" : "#/components/schemas/ProblemPhase",
+            "description" : "错误阶段",
+            "example" : "DOMAIN:表示在领域层"
+          },
+          "severity" : {
+            "$ref" : "#/components/schemas/ProblemSeverity",
+            "description" : "错误程度",
+            "example" : "ERROR: 表示业务中断"
+          },
+          "domain" : {
+            "type" : "string",
+            "description" : "领域",
+            "example" : "order"
+          },
+          "properties" : {
+            "type" : "object",
+            "description" : "其他属性(KV), flat to normal fields refer to the problem details of hope/spring",
+            "example" : "扩展属性, Key-Value 对"
+          }
+        },
+        "title" : "Error"
+      },
+      "ProblemSeverity" : {
+        "default" : "LOW",
+        "description" : "错误严重程度",
+        "oneOf" : [ {
+          "const" : "LOW",
+          "description" : "Low",
+          "example" : "LOW",
+          "title" : "LOW",
+          "x-hope-enum-item-code" : 1,
+          "x-hope-enum-item-des-cn" : "低,无影响"
+        }, {
+          "const" : "WARN",
+          "description" : "Warn",
+          "example" : "WARN",
+          "title" : "WARN",
+          "x-hope-enum-item-code" : 2,
+          "x-hope-enum-item-des-cn" : "警告,业务错误可重试"
+        }, {
+          "const" : "ERROR",
+          "description" : "Error",
+          "example" : "ERROR",
+          "title" : "ERROR",
+          "x-hope-enum-item-code" : 4,
+          "x-hope-enum-item-des-cn" : "错误,业务无法进行"
+        }, {
+          "const" : "FATAL",
+          "description" : "Fatal",
+          "example" : "FATAL",
+          "title" : "FATAL",
+          "x-hope-enum-item-code" : 8,
+          "x-hope-enum-item-des-cn" : "灾难,数据破坏"
+        } ],
+        "title" : "ProblemSeverity",
+        "x-hope-java-class" : "hope.common.wire.constant.ProblemSeverity",
+        "x-hope-enum-type" : "true"
+      },
+      "ProblemPhase" : {
+        "default" : "CONTROLLER",
+        "description" : "错误层次",
+        "oneOf" : [ {
+          "const" : "CONTROLLER",
+          "description" : "Controller",
+          "example" : "CONTROLLER",
+          "title" : "CONTROLLER",
+          "x-hope-enum-item-code" : 1,
+          "x-hope-enum-item-des-cn" : "表单层"
+        }, {
+          "const" : "SERVICE",
+          "description" : "Service",
+          "example" : "SERVICE",
+          "title" : "SERVICE",
+          "x-hope-enum-item-code" : 2,
+          "x-hope-enum-item-des-cn" : "服务层"
+        }, {
+          "const" : "DOMAIN",
+          "description" : "Domain",
+          "example" : "DOMAIN",
+          "title" : "DOMAIN",
+          "x-hope-enum-item-code" : 4,
+          "x-hope-enum-item-des-cn" : "领域层"
+        } ],
+        "title" : "ProblemPhase",
+        "x-hope-java-class" : "hope.common.wire.constant.ProblemPhase",
+        "x-hope-enum-type" : "true"
+      },
+      "LoginRequest" : {
+        "type" : "object",
+        "description" : "登录请求",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "description" : "邮箱",
+            "example" : "jake@bigger.com",
+            "x-hope-validation" : {
+              "email" : true
+            },
+            "x-hope-mock" : {
+              "nature" : "EMAIL",
+              "name" : "nature"
+            }
+          },
+          "password" : {
+            "type" : "string",
+            "description" : "密码",
+            "example" : "123456"
+          },
+          "rememberMe" : {
+            "type" : "boolean",
+            "description" : "记住我",
+            "example" : true
+          },
+          "tenantId" : {
+            "type" : "number",
+            "format" : "int64",
+            "description" : "租户ID-可选(非己租户则忽略)，前端cookie获取或用户设置,如无，直接进入个人工作间主页",
+            "example" : "42"
+          }
+        },
+        "x-hope-rt-meta" : {
+          "clz" : "com.apihug.guide.wire.api.first.request.LoginRequest",
+          "protoFrom" : "com/apihug/guide/proto/api/first/request/request.proto"
+        }
+      },
+      "LoginResponse" : {
+        "type" : "object",
+        "description" : "登录请求",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "description" : "邮箱",
+            "example" : "jake@bigger.com",
+            "x-hope-validation" : {
+              "email" : true
+            },
+            "x-hope-mock" : {
+              "nature" : "EMAIL",
+              "name" : "nature"
+            }
+          },
+          "token" : {
+            "type" : "string",
+            "description" : "token",
+            "example" : "32321x",
+            "x-hope-mock" : {
+              "length" : 32,
+              "name" : "string"
+            }
+          }
+        },
+        "x-hope-rt-meta" : {
+          "clz" : "com.apihug.guide.wire.api.first.response.LoginResponse",
+          "protoFrom" : "com/apihug/guide/proto/api/first/response/response.proto"
+        }
+      },
+      "LoginResponseResult" : {
+        "type" : "object",
+        "properties" : {
+          "code" : {
+            "type" : "integer",
+            "format" : "int32",
+            "description" : "返回码,零成功,非零失败"
+          },
+          "message" : {
+            "type" : "string",
+            "description" : "返回提示信息"
+          },
+          "errors" : {
+            "type" : "array",
+            "description" : "错误详情列表",
+            "items" : {
+              "$ref" : "#/components/schemas/Error"
+            },
+            "title" : "errors"
+          },
+          "data" : {
+            "$ref" : "#/components/schemas/LoginResponse"
+          }
+        }
+      }
+    },
+    "responses" : { },
+    "parameters" : {
+      "PageRequest" : {
+        "name" : "pageRequest",
+        "in" : "query",
+        "description" : "Page Request parameter",
+        "schema" : {
+          "type" : "object",
+          "description" : "分页查询Parameter对象",
+          "properties" : {
+            "page" : {
+              "type" : "integer",
+              "format" : "int32",
+              "description" : "Zero-based page index (0..N)",
+              "minimum" : 0,
+              "title" : "page"
+            },
+            "size" : {
+              "type" : "integer",
+              "format" : "int32",
+              "default" : 20,
+              "description" : "The size of the page to be returned",
+              "maximum" : 1024,
+              "minimum" : 1,
+              "title" : "size"
+            },
+            "sort" : {
+              "type" : "array",
+              "description" : "Sorting criteria in the format: property,(asc|desc). \nDefault sort order is ascending. \nMultiple sort criteria are supported.",
+              "items" : {
+                "type" : "string"
+              }
+            }
+          },
+          "title" : "PageRequest"
+        }
+      }
+    },
+    "examples" : { },
+    "requestBodies" : { },
+    "headers" : { },
+    "securitySchemes" : { },
+    "links" : { },
+    "callbacks" : { }
+  },
+  "x-hope-project" : {
+    "artifact" : {
+      "groupId" : "com.apihug",
+      "artifactId" : "001-hello-world-proto",
+      "version" : "0.0.4-RELEASE"
+    },
+    "name" : "001-hello-world-proto",
+    "description" : "apihug guide first demo proto",
+    "application" : "001-hello-world",
+    "packageName" : "com.apihug.guide",
+    "type" : "PROTO",
+    "domain" : "hope",
+    "identifier" : "001-hello-world-proto",
+    "module" : "001-hello-world-proto",
+    "status" : {
+      "deprecated" : false,
+      "createdTimestamp" : "2023-01-01",
+      "createdBy" : "Aaron"
+    },
+    "persistence" : {
+      "identifyType" : "LONG",
+      "tenantType" : "LONG"
+    }
+  }
+}
