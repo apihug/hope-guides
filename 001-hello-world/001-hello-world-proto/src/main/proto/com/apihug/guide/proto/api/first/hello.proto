@@ -13,7 +13,10 @@ option java_multiple_files = true;
 option (hope.domain.kind) = IDL;
 
 service HelloEchoService {
-    option (hope.swagger.base_path) = "/guide";
+    option (hope.swagger.svc) = {
+        path: "/guide";
+        description: "hello world"
+    };
 
     rpc SayHello (google.protobuf.Empty) returns (google.protobuf.Empty) {
         option (hope.swagger.operation) = {

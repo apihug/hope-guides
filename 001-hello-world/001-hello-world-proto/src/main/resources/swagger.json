@@ -263,6 +263,38 @@
         "x-hope-java-class" : "hope.common.wire.constant.ProblemPhase",
         "x-hope-enum-type" : "true"
       },
+      "LoginResponse" : {
+        "type" : "object",
+        "description" : "登录请求",
+        "properties" : {
+          "email" : {
+            "type" : "string",
+            "format" : "email",
+            "description" : "邮箱",
+            "example" : "jake@bigger.com",
+            "x-hope-validation" : {
+              "email" : true
+            },
+            "x-hope-mock" : {
+              "nature" : "EMAIL",
+              "name" : "nature"
+            }
+          },
+          "token" : {
+            "type" : "string",
+            "description" : "token",
+            "example" : "32321x",
+            "x-hope-mock" : {
+              "length" : 32,
+              "name" : "string"
+            }
+          }
+        },
+        "x-hope-rt-meta" : {
+          "clz" : "com.apihug.guide.wire.api.first.response.LoginResponse",
+          "protoFrom" : "com/apihug/guide/proto/api/first/response/response.proto"
+        }
+      },
       "LoginRequest" : {
         "type" : "object",
         "description" : "登录请求",
@@ -300,38 +332,6 @@
         "x-hope-rt-meta" : {
           "clz" : "com.apihug.guide.wire.api.first.request.LoginRequest",
           "protoFrom" : "com/apihug/guide/proto/api/first/request/request.proto"
-        }
-      },
-      "LoginResponse" : {
-        "type" : "object",
-        "description" : "登录请求",
-        "properties" : {
-          "email" : {
-            "type" : "string",
-            "format" : "email",
-            "description" : "邮箱",
-            "example" : "jake@bigger.com",
-            "x-hope-validation" : {
-              "email" : true
-            },
-            "x-hope-mock" : {
-              "nature" : "EMAIL",
-              "name" : "nature"
-            }
-          },
-          "token" : {
-            "type" : "string",
-            "description" : "token",
-            "example" : "32321x",
-            "x-hope-mock" : {
-              "length" : 32,
-              "name" : "string"
-            }
-          }
-        },
-        "x-hope-rt-meta" : {
-          "clz" : "com.apihug.guide.wire.api.first.response.LoginResponse",
-          "protoFrom" : "com/apihug/guide/proto/api/first/response/response.proto"
         }
       },
       "LoginResponseResult" : {
