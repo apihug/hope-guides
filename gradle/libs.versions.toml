@@ -7,7 +7,7 @@ jakartaValidation = "3.0.2"
 
 # plugins
 springBoot = "3.2.0"
-springDepedency = "1.1.4"
+springDependency = "1.1.4"
 protobuf = "0.8.19"
 liquibasePluginVersion = "2.2.0"
 gitProperties= "2.4.0"
@@ -52,7 +52,7 @@ archunitEngine = { group = "com.tngtech.archunit", name = "archunit-junit5-engin
 [plugins]
 #Spring thing
 springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
-springDepedency = { id = "io.spring.dependency-management", version.ref = "springDepedency" }
+springDependency = { id = "io.spring.dependency-management", version.ref = "springDependency" }
 #Hope thing
 hopeWire = { id = "com.apihug.wire", version.ref = "apihug" }
 hopeStub = { id = "com.apihug.stub", version.ref = "apihug" }

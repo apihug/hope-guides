@@ -1,6 +1,6 @@
 plugins {
     id "java-library"
-    id "com.apihug.wire"
+    alias(libs.plugins.hopeWire)
 }
 
 description("apihug guide first demo proto")
