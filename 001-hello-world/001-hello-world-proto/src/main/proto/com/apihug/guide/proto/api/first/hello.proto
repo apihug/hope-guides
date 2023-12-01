@@ -29,8 +29,8 @@ service HelloEchoService {
                 parameter: {
                     in: QUERY;
                     name: "name";
-                    scheme: {
-                        type: STRING;
+                    schema: {
+                        format: STRING;
                     }
                 }
             }

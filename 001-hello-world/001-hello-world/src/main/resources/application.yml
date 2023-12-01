@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: 001-hello-world
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: static/i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    active: dev
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+hope:
+  cache:
+    type: jcache
+    ehcache:
+      heap:
+        size: 1000
+      caches:
+        SYSTEM_USER_AUTHORITIES:
+          keyClz: java.lang.String
+          valueClz: java.util.Set
+          heap:
+            size: 1000
+          duration: 30m
+        SYSTEM_USER_MENUS:
+          keyClz: java.lang.String
+          valueClz: java.util.List
+          heap:
+            size: 1000
+          duration: 30m

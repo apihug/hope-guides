@@ -1,0 +1,82 @@
+plugins {
+    id "java"
+
+    id "org.springframework.boot"
+    id "io.spring.dependency-management"
+
+    id "com.apihug.stub"
+
+    id "org.liquibase.gradle"
+}
+
+apply from: "${rootProject.projectDir}/gradle/liquibase.gradle"
+
+
+hopeStub {
+    debug = false
+}
+
+description("demo for the level-01 hello world case")
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+ext {
+    set('springCloudVersion', "2022.0.1")
+}
+
+dependencies {
+
+    //Boot Core's
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+    //Cloud's
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+
+    //Hope's
+    implementation project(':001-hello-world:001-hello-world-proto')
+    implementation(libs.apihugCommonProto)
+
+    //Other Core's
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // Cache
+    implementation(libs.apihugSpringCache)
+    implementation("org.springframework.boot:spring-boot-starter-cache")
+    implementation "org.ehcache:ehcache:3.10.8"
+
+
+    //3rd party's if you need
+    //This is half controlled lib
+    implementation(libs.swaggerV3Core)
+    //implementation 'commons-codec:commons-codec:1.15'
+    //implementation 'commons-io:commons-io:2.11.0'
+
+    //jwt
+    //implementation "io.jsonwebtoken:jjwt-api:0.11.5"
+    //runtimeOnly "io.jsonwebtoken:jjwt-impl:0.11.5"
+    //runtimeOnly "io.jsonwebtoken:jjwt-jackson:0.11.5"
+
+    testImplementation(libs.awaitility)
+    //Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.28'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    testImplementation(libs.archunitApi)
+    testRuntimeOnly(libs.archunitEngine)
+
+}
+tasks.named('test') {
+    useJUnitPlatform()
+}

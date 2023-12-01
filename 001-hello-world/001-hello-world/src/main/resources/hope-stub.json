@@ -1,0 +1,17 @@
+{
+  "packageName": "com.apihug.guide",
+  "name": "001-hello-world",
+  "domain": "hope",
+  "proto": {
+    "artifact": {
+      "groupId": "com.apihug.guide",
+      "artifactId": "001-hello-world-proto",
+      "version": "0.0.1"
+    },
+    "module": "001-hello-world-proto",
+    "domain": "hope",
+    "applied": true
+  },
+  "dependencies": [
+  ]
+}

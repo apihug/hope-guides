@@ -1,0 +1,67 @@
+[versions]
+# libraries
+apihug = "0.3.3-RELEASE"
+swaggerVersion = "1.6.6"
+swagger3xVersion = "2.2.7"
+jakartaValidation = "3.0.2"
+
+# plugins
+springBoot = "3.2.0"
+springDepedency = "1.1.4"
+protobuf = "0.8.19"
+liquibasePluginVersion = "2.2.0"
+gitProperties= "2.4.0"
+spotless="6.12.0"
+spotbugs="5.0.13"
+sonarqube="3.0"
+
+# test
+archUnit = "1.1.0"
+assertj = "3.24.2"
+awaitility = "4.2.0"
+
+
+[libraries]
+#Apihug Common
+apihugBom = { group = "com.apihug", name = "it-bom", version.ref = "apihug" }
+apihugCommon = { group = "com.apihug", name = "it-common" }
+apihugCommonApi = { group = "com.apihug", name = "it-common-api" }
+apihugCommonMock = { group = "com.apihug", name = "it-common-mock" }
+apihugCommonProto = { group = "com.apihug", name = "it-common-proto" }
+#ApiHug Spring plus
+apihugSpring = { group = "com.apihug", name = "it-common-spring" }
+apihugSpringCore = { group = "com.apihug", name = "it-common-spring-core" }
+apihugSpringApi = { group = "com.apihug", name = "it-common-spring-api" }
+apihugSpringCache = { group = "com.apihug", name = "it-common-spring-cache" }
+apihugSpringData = { group = "com.apihug", name = "it-common-spring-data" }
+apihugSpringMock = { group = "com.apihug", name = "it-common-spring-mock" }
+apihugSpringSecurity = { group = "com.apihug", name = "it-common-spring-security" }
+#Other 3rd party
+swaggerModel = { group = "io.swagger", name = "swagger-models", version.ref = "swaggerVersion" }
+swaggerV3Model = { group = "io.swagger.core.v3", name = "swagger-models", version.ref = "swagger3xVersion" }
+swaggerV3Core = { group = "io.swagger.core.v3", name = "swagger-core", version.ref = "swagger3xVersion" }
+
+#test
+# Add yours
+awaitility = { group = "org.awaitility", name = "awaitility", version.ref = "awaitility" }
+assertjCore = { group = "org.assertj", name = "assertj-core", version.ref = "assertj" }
+archunitApi = { group = "com.tngtech.archunit", name = "archunit-junit5-api", version.ref = "archUnit" }
+archunitEngine = { group = "com.tngtech.archunit", name = "archunit-junit5-engine", version.ref = "archUnit" }
+
+
+[plugins]
+#Spring thing
+springBoot = { id = "org.springframework.boot", version.ref = "springBoot" }
+springDepedency = { id = "io.spring.dependency-management", version.ref = "springDepedency" }
+#Hope thing
+hopeWire = { id = "com.apihug.wire", version.ref = "apihug" }
+hopeStub = { id = "com.apihug.stub", version.ref = "apihug" }
+#protobuf plugin
+protobuf = { id = "com.google.protobuf", version.ref = "protobuf" }
+#Liquibase
+liquibase = { id = "org.liquibase.gradle", version.ref = "liquibasePluginVersion" }
+
+spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
+spotbugs = { id = "com.github.spotbugs", version.ref = "spotbugs" }
+gitProperties = { id = "com.gorylenko.gradle-git-properties", version.ref = "gitProperties" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }

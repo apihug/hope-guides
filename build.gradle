@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.spotbugs)
     alias(libs.plugins.sonarqube)
     alias(libs.plugins.gitProperties)
+
 }
 
 logger.quiet "Java version: ${System.properties['java.version']}"
